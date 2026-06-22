@@ -1,0 +1,331 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪圖資WMTS服務",
+    "version": "v1",
+    "description": "提供國土測繪圖資WMTS服務。"
+  },
+  "servers": [
+    {
+      "url": "https://wmts.nlsc.gov.tw/wmts",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-api.nlsc.gov.tw/wmts",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "基本地形圖",
+      "description": "基本地形圖描述"
+    },
+    {
+      "name": "像片基本圖",
+      "description": "像片基本圖描述"
+    }
+  ],
+  "paths": {
+    "/wmts/TOPO05K_100/{TileMatrix}/{TileRow}/{TileCol}": {
+      "get": {
+        "operationId": "Maps-TBM-WMTS001",
+        "summary": "取得1/5000基本地形圖_100年",
+        "description": "取得民國100年的1/5000基本地形圖",
+        "tags": [
+          "基本地形圖"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "parameters": [
+
+          {
+            "name": "TileMatrix",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "縮放層級 (zoom level)"
+          },
+          {
+            "name": "TileRow",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚行號"
+          },
+          {
+            "name": "TileCol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚列號"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ]
+            },
+            "description": "輸出圖磚格式"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳 WMTS 圖磚",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+    "/wmts/TOPO05K_101/{TileMatrix}/{TileRow}/{TileCol}": {
+      "get": {
+        "operationId": "Maps-TBM-WMTS002",
+        "summary": "取得1/5000基本地形圖_101年",
+        "description": "取得民國101年的1/5000基本地形圖",
+        "tags": [
+          "基本地形圖"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "parameters": [
+
+          {
+            "name": "TileMatrix",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "縮放層級 (zoom level)"
+          },
+          {
+            "name": "TileRow",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚行號"
+          },
+          {
+            "name": "TileCol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚列號"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ]
+            },
+            "description": "輸出圖磚格式"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳 WMTS 圖磚",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+    "/wmts/TOPO05KPHOTO_100/{TileMatrix}/{TileRow}/{TileCol}": {
+      "get": {
+        "operationId": "Maps-TBM-WMTS003",
+        "summary": "取得1/5000像片基本圖_100年",
+        "description": "取得民國100年的1/5000像片基本圖",
+        "tags": [
+          "像片基本圖"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "parameters": [
+
+          {
+            "name": "TileMatrix",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "縮放層級 (zoom level)"
+          },
+          {
+            "name": "TileRow",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚行號"
+          },
+          {
+            "name": "TileCol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚列號"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ]
+            },
+            "description": "輸出圖磚格式"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳 WMTS 圖磚",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+    "/wmts/TOPO05KPHOTO_101/{TileMatrix}/{TileRow}/{TileCol}": {
+      "get": {
+        "operationId": "Maps-TBM-WMTS004",
+        "summary": "取得1/5000像片基本圖_101年",
+        "description": "取得民國101年的1/5000像片基本圖",
+        "tags": [
+          "像片基本圖"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "parameters": [
+
+          {
+            "name": "TileMatrix",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "縮放層級 (zoom level)"
+          },
+          {
+            "name": "TileRow",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚行號"
+          },
+          {
+            "name": "TileCol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚列號"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ]
+            },
+            "description": "輸出圖磚格式"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳 WMTS 圖磚",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+
+  }
+}
