@@ -1,0 +1,218 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪圖資電子地圖WFS服務",
+    "version": "v1",
+    "description": "提供國土測繪圖資電子地圖WFS服務。"
+  },
+  "servers": [
+    {
+      "url": "https://wfs.nlsc.gov.tw/WFS",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-wfs.nlsc.gov.tw/WFS",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "道路",
+      "description": "道路描述"
+    },
+    {
+      "name": "水系",
+      "description": "水系描述"
+    }
+  ],
+  "paths": {
+    "/EMAP_ROAD": {
+      "get": {
+        "operationId": "EMAP_WFS_001",
+        "summary": "取得臺灣通用電子地圖道路(道路中線)",
+        "description": "取得臺灣通用電子地圖道路(道路中線)",
+        "tags": [ 
+          "道路"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "parameters": [ 
+          {
+            "name": "SERVICE",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "WFS"
+              ]
+            },
+            "description": "服務類型，固定為 WFS"
+          },
+          {
+            "name": "REQUEST",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GetFeature"
+              ]
+            },
+            "description": "請求操作類型"
+          },
+          {
+            "name": "VERSION",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1.3.0"
+            },
+            "description": "WFS 版本"
+          },
+          {
+            "name": "SRSName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "EPSG:3857"
+            },
+            "description": "座標參考系統"
+          },
+          {
+            "name": "BBOX",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "121.0,24.0,122.0,25.0"
+            },
+            "description": "邊界框 (minX,minY,maxX,maxY)"
+          },
+          {
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GML"
+              ]
+            },
+            "description": "請求操作類型"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳WFS資料",
+            "content": {
+              "application/gml+xml": {
+                "schema": {
+                  "type": "string"	
+                }
+              }            
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+    "/EMAP_RIVERA": {
+      "get": {
+        "operationId": "EMAP_WFS_002",
+        "summary": "取得臺灣通用電子地圖水系(河川)",
+        "description": "取得臺灣通用電子地圖水系(河川)",
+        "tags": [
+          "水系"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "parameters": [ 
+          {
+            "name": "SERVICE",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "WFS"
+              ]
+            },
+            "description": "服務類型，固定為 WFS"
+          },
+          {
+            "name": "REQUEST",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GetFeature"
+              ]
+            },
+            "description": "請求操作類型"
+          },
+          {
+            "name": "VERSION",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1.3.0"
+            },
+            "description": "WFS 版本"
+          },
+          {
+            "name": "SRSName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "EPSG:3857"
+            },
+            "description": "座標參考系統"
+          },
+          {
+            "name": "BBOX",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "121.0,24.0,122.0,25.0"
+            },
+            "description": "邊界框 (minX,minY,maxX,maxY)"
+          },
+          {
+            "name": "outputFormat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GML"
+              ]
+            },
+            "description": "請求操作類型"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳WFS資料",
+            "content": {
+              "application/gml+xml": {
+                "schema": {
+                  "type": "string"	
+                }
+              }            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+
+  }
+}
