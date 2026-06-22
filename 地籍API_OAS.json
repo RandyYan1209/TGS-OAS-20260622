@@ -1,0 +1,241 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪圖資地籍API服務",
+    "version": "v1",
+    "description": "提供國土測繪圖資地籍API服務。"
+  },
+  "servers": [
+    {
+      "url": "https://api.nlsc.gov.tw",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-api.nlsc.gov.tw",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "地段號",
+      "description": "地段號描述"
+    },
+    {
+      "name": "其他",
+      "description": "其他描述"
+    }
+  ],
+  "paths": {
+    "/S_Maps/qryTileMapIndex": {
+      "get": {
+        "operationId": "CADAPI001",
+        "summary": "取得CAD_005坐標查地段號",
+        "description": "取得CAD_005坐標查地段號",
+        "tags": [
+          "地段號"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2"
+            },
+            "description": "type參數描述"
+          },
+          {
+            "name": "flag",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"            
+            },
+            "description": "flag參數描述"
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "B"
+            },
+            "description": "city參數描述"
+          },
+          {
+            "name": "x",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "int",
+              "example": 120.634413
+            },
+            "description": "x參數描述"
+          },
+          {
+            "name": "y",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "int",
+              "example": 24.153282
+            },
+            "description": "y參數描述"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CADItem1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+    "/dmaps/CadasMapImage": {
+      "get": {
+        "operationId": "CADAPI002",
+        "summary": "取得CAD_002指定地號查詢著色圖",
+        "description": "取得CAD_002指定地號查詢著色圖",
+        "tags": [
+          "其他"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "parameters": [
+          {
+            "name": "lx",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": 120.634413
+            },
+            "description": "lx參數描述"
+          },
+          {
+            "name": "ly",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "int",
+              "example": 24.153282
+            },
+            "description": "ly參數描述"
+          },
+          {
+            "name": "rx",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": 120.634413
+            },
+            "description": "rx參數描述"
+          },
+          {
+            "name": "ry",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "int",
+              "example": 24.153282
+            },
+            "description": "ry參數描述"
+          }
+        ],
+        "responses": { 
+          "200": {
+            "description": "成功回傳",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "properties": {
+                    "image": {
+                      "type": "string",
+                      "format": "byte"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+
+
+  },
+  "components": {
+    "schemas": {
+      "CADItem1": {
+        "type": "object",
+        "properties": {
+          "sectStr": {
+            "type": "string",
+            "example": "6buO5piO5q61"  
+          },
+          "sect": {
+            "type": "string",
+            "example": "6buO5piO5q61"  
+          },
+          "officeStr": {
+            "type": "string",
+            "example": "5Lit6IiI"  
+          },
+          "office": {
+            "type": "string",
+            "example": "BC"  
+          },
+          "landno": {
+            "type": "string",
+            "example": "03420000"  
+          },
+          "cx": {
+            "type": "number",
+            "example": 120.633943  
+          },
+          "cy": {
+            "type": "number",
+            "example": 24.153468  
+          },
+          "lx": {
+            "type": "number",
+            "example": 120.633053  
+          },
+          "ly": {
+            "type": "number",
+            "example": 24.152829  
+          },
+          "rx": {
+            "type": "number",
+            "example": 120.634835  
+          },
+          "ry": {
+            "type": "number",
+            "example": 24.153634  
+          },
+          "extend": {
+            "type": "string",
+            "example": "0"  
+          }
+        }
+      }
+    }
+  }
+}
