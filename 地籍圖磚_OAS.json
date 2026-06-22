@@ -1,0 +1,271 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪圖資地籍圖磚服務",
+    "version": "v1",
+    "description": "提供地籍圖磚OGC WMS、WMTS標準服務，支援 GetCapabilities、GetMap 與 GetFeatureInfo。"
+  },
+  "servers": [
+    {
+      "url": "https://landmaps.nlsc.gov.tw",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-landmaps.nlsc.gov.tw",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "地籍圖磚",
+      "description": "地籍圖磚OGC WMS、WMTS標準服務"
+    }
+  ],
+   "paths": {
+    "/S_Maps/wms": {
+      "get": {
+        "operationId": "WMS002",
+        "summary": "地籍圖磚WMS請求",
+        "description": "支援 OGC WMS 操作：GetCapabilities、GetMap、GetFeatureInfo。",
+        "tags": [
+          "地籍圖磚"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "parameters": [
+          {
+            "name": "SERVICE",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "WMS"
+              ]
+            },
+            "description": "服務類型，固定為 WMS"
+          },
+          {
+            "name": "REQUEST",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GetCapabilities",
+                "GetMap",
+                "GetFeatureInfo"
+              ]
+            },
+            "description": "請求操作類型"
+          },
+          {
+            "name": "VERSION",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1.3.0"
+            },
+            "description": "WMS 版本，常用 1.1.1 或 1.3.0"
+          },
+          {
+            "name": "LAYERS",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DMAPS"
+              ]
+            },
+            "description": "顯示的圖層名稱（可多個，以逗號分隔）"
+          },
+          {
+            "name": "STYLES",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "樣式名稱，可留空代表預設樣式"
+          },
+          {
+            "name": "CRS",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "EPSG:3857"
+            },
+            "description": "座標參考系統"
+          },
+          {
+            "name": "BBOX",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "121.0,24.0,122.0,25.0"
+            },
+            "description": "邊界框 (minX,minY,maxX,maxY)"
+          },
+          {
+            "name": "WIDTH",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 256
+            },
+            "description": "輸出影像寬度（像素）"
+          },
+          {
+            "name": "HEIGHT",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 256
+            },
+            "description": "輸出影像高度（像素）"
+          },
+          {
+            "name": "FORMAT",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ]
+            },
+            "description": "輸出影像格式"
+          },
+          {
+            "name": "QUERY_LAYERS",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "欲查詢的圖層（GetFeatureInfo 使用）"
+          },
+          {
+            "name": "INFO_FORMAT",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            },
+            "description": "GetFeatureInfo 回應格式 (如 text/html, application/json)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳 WMS 回應",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"	
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "請求參數錯誤"
+          }
+        }
+      }
+    },
+    "/S_Maps/wmts/DMAPS/{TileMatrix}/{TileRow}/{TileCol}": {
+      "get": {
+        "operationId": "Maps-TBM-WMTS005",
+        "summary": "取得地籍圖磚WMTS",
+        "description": "取得地籍圖磚WMTS",
+        "tags": [
+          "地籍圖磚"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "parameters": [
+
+          {
+            "name": "TileMatrix",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "縮放層級 (zoom level)"
+          },
+          {
+            "name": "TileRow",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚行號"
+          },
+          {
+            "name": "TileCol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "圖磚列號"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg"
+              ]
+            },
+            "description": "輸出圖磚格式"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳 WMTS 圖磚",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+  }
+}
