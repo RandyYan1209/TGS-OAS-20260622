@@ -1,0 +1,134 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪多維度空間I3S服務",
+    "version": "v1",
+    "description": "國土測繪多維度空間I3S服務描述。"
+  },
+  "servers": [
+    {
+      "url": "i3s.nlsc.gov.tw",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-i3s.nlsc.gov.tw",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "建物模型",
+      "description": "建物模型描述"
+    },
+    {
+      "name": "一般道路",
+      "description": "一般道路描述" 
+    }
+  ],
+  "paths": {
+    "/building/i3s/SceneServer/layers/2": {
+      "get": {
+        "operationId": "I3S001",
+        "summary": "取得基隆市建物模型 ",
+        "description": "取得基隆市建物模型 ",
+        "tags": [
+          "建物模型"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }, 
+      "/building/i3s/SceneServer/layers/7": {
+      "get": {
+        "operationId": "I3S002",
+        "summary": "取得桃園市建物模型 ",
+        "description": "取得桃園市建物模型 ",
+        "tags": [
+          "建物模型"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }, 
+      "/road2nd/i3s/SceneServer/layers/5": {
+      "get": {
+        "operationId": "I3S003",
+        "summary": "取得新北市一般道路_地形貼合版",
+        "description": "取得新北市一般道路_地形貼合版",
+        "tags": [
+          "一般道路"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }, 
+      "/road2nd/i3s/SceneServer/layers/13": {
+      "get": {
+        "operationId": "I3S004",
+        "summary": "取得新竹市一般道路_地形貼合版",
+        "description": "取得新竹市一般道路_地形貼合版",
+        "tags": [
+          "一般道路"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+  }
+}
