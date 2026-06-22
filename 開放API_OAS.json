@@ -1,0 +1,133 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪圖資開放API服務",
+    "version": "v1",
+    "description": "提供國土測繪圖資開放API服務。"
+  },
+  "servers": [
+    {
+      "url": "https://api.nlsc.gov.tw",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-api.nlsc.gov.tw",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "代碼服務",
+      "description": "代碼服務描述"
+    },
+    {
+      "name": "交叉路口",
+      "description": "交叉路口描述"
+    }
+  ],
+  "paths": {
+    "/other/ListCounty": {
+      "get": {
+        "operationId": "OpenAPI001",
+        "summary": "取得COM_003代碼服務－縣市清單",
+        "description": "取得COM_003代碼服務－縣市清單",
+        "tags": [
+          "代碼服務"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "responses": {
+          "200": {
+            "description": "成功回傳",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountyItems"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+    "/idc/ListRoadM": {
+      "get": {
+        "operationId": "OpenAPI002",
+        "summary": "取得COM_014交叉路口-鄉鎮市區查詢道路列表",
+        "description": "取得COM_014交叉路口-鄉鎮市區查詢道路列表",
+        "tags": [
+          "交叉路口"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "responses": {
+          "200": {
+            "description": "成功回傳",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/roads"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+
+  },
+  "components": {
+    "schemas": {
+      "CountyItems": {
+        "type": "object",
+        "properties": {
+          "countyItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountyItem"
+            }
+          }
+        }
+      },
+      "CountyItem": {
+        "type": "object",
+        "properties": {
+          "countycode": {
+            "type": "string",
+            "example": "A"
+          },
+          "countyname": {
+            "type": "string",
+            "example": "臺北市"
+          }
+        }
+      },
+      "roads": {
+        "type": "object",
+        "properties": {
+          "road": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/roadItem"
+            }
+          }
+        }
+      },
+      "roadItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "八德街"
+          }
+        }
+      }
+
+    }
+
+  }
+}
