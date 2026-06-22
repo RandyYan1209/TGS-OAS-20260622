@@ -1,0 +1,177 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "國土測繪多維度空間3DAPI服務",
+    "version": "v1",
+    "description": "提供國土測繪多維度空間3DAPI服務。"
+  },
+  "servers": [
+    {
+      "url": "https://download03.nlsc.gov.tw/WebApi",
+      "description": "正式環境"
+    },
+    {
+      "url": "https://test-download03.nlsc.gov.tw/WebApi",
+      "description": "測試環境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "三維建物模型屬性查詢",
+      "description": "三維建物模型屬性查詢描述"
+    },
+    {
+      "name": "三維建物單棟或區域式服務發布",
+      "description": "三維建物單棟或區域式服務發布描述"
+    }
+  ],
+  "paths": {
+"/BuildingAttributes/QueryBuildingAttributes/{Type}/{Name}/{DataSourceName}/{MinBuildingAge}/{MaxBuildingAge}/{MinBuildingFloor}/{MaxBuildingFloor}/{Radius}/{Coordinates}": {
+      "post": {
+        "operationId": "3DAPI001",
+        "summary": "取得三維建物模型屬性查詢(查詢建物屬性)",
+        "description": "取得三維建物模型屬性查詢(查詢建物屬性)",
+        "tags": [
+          "三維建物模型屬性查詢"
+        ],
+        "x-updateTime": "2026-06-12T15:30:23+08:00",
+        "parameters": [
+
+          {
+            "name": "Type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Type描述"
+          },
+          {
+            "name": "Name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name描述"
+          },
+          {
+            "name": "DataSourceName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "DataSourceName描述"
+          },
+          {
+            "name": "MinBuildingAge",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MinBuildingAge描述"
+          },
+          {
+            "name": "MaxBuildingAge",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MaxBuildingAge描述"
+          },
+          {
+            "name": "MinBuildingFloor",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MinBuildingFloor描述"
+          },
+          {
+            "name": "MaxBuildingFloor",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MaxBuildingFloor描述"
+          },
+          {
+            "name": "Radius",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Radius描述"
+          },
+          {
+            "name": "Coordinates",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Coordinates描述"
+          }
+ 
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    },
+"/PartialBuildingService/Transfer_Request/SelectByPolygon/{serviceType}": {
+      "post": {
+        "operationId": "3DAPI002",
+        "summary": "取得三維建物單棟或區域式服務發布(多邊形選取建物轉檔)",
+        "description": "取得三維建物單棟或區域式服務發布(多邊形選取建物轉檔)",
+        "tags": [
+          "三維建物單棟或區域式服務發布"
+        ],
+        "x-updateTime": "2026-06-13T08:51:32+08:00",
+        "parameters": [
+
+          {
+            "name": "serviceType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "serviceType描述"
+          } 
+        ],
+        "responses": {
+          "200": {
+            "description": "成功回傳",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }            }
+          },
+          "400": {
+            "description": "參數錯誤"
+          }
+        }
+      }
+    }
+  }
+}
